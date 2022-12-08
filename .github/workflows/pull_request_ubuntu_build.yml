@@ -53,12 +53,8 @@ jobs:
           set-java-home: 'false'
 
       - name: Build with Gradle
-        env:
-          packageUser: ${{ secrets.USER }}
-          packagePAT: ${{ secrets.TOKEN }}
         run: |
           export DISPLAY=':99.0'
-          echo ${{ secrets.USER }} && echo ${{ secrets.TOKEN }}
           /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
           ./gradlew build -Pnative.test --max-workers=2 --scan --no-daemon 
           find ~/.gradle/caches/ -name "*.lock" -type f -delete
