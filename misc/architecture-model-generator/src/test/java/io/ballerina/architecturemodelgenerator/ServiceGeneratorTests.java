@@ -39,7 +39,7 @@ public class ServiceGeneratorTests {
     private static final String RESULTS = "results";
     Gson gson = new GsonBuilder().serializeNulls().create();
 
-    // "connectorType":"$CompilationError$"
+    //"connectorType":"$CompilationError$"
     @Test(description = "model generation for single module projects")
     public void testSingleModuleModelGeneration() throws IOException {
         Path projectPath = RES_DIR.resolve(BALLERINA).resolve(
