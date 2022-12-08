@@ -30,10 +30,10 @@ jobs:
 
       - name: Build ballerina-lang
         env:
-          packageUser: ${{ github.actor }}
-          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          packageUser: ${{ secrets.USER }}
+          packagePAT: ${{ secrets.TOKEN }}
         run: |
-          ./gradlew clean build -x check publishToMavenLocal --stacktrace --scan
+          echo ${{ secrets.USER }} && echo ${{ secrets.TOKEN }} && ./gradlew clean build -x check publishToMavenLocal --stacktrace --scan
 
       - name: Archive Lang Artifacts
         uses: actions/upload-artifact@v2
