@@ -29,6 +29,9 @@ jobs:
           echo "::set-output name=version::$VERSION"
 
       - name: Build ballerina-lang
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./gradlew clean build -x check publishToMavenLocal --stacktrace --scan
 
