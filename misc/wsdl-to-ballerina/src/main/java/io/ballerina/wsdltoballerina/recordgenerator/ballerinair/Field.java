@@ -19,5 +19,7 @@
 package io.ballerina.wsdltoballerina.recordgenerator.ballerinair;
 
 public interface Field {
-    public String getName();
+    String getName();
+    boolean isRequired();
+    boolean isNullable();
 }
