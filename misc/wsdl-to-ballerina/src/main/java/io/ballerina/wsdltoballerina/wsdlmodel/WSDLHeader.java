@@ -19,5 +19,13 @@
 package io.ballerina.wsdltoballerina.wsdlmodel;
 
 public class WSDLHeader {
+    WSDLPart part;
 
+    public WSDLPart getPart() {
+        return part;
+    }
+
+    public void setPart(WSDLPart part) {
+        this.part = part;
+    }
 }

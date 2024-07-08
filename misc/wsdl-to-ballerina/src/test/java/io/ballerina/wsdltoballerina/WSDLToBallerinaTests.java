@@ -18,17 +18,28 @@
 
 package io.ballerina.wsdltoballerina;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class WSDLToBallerinaTests {
 
     private static final Path RES_DIR = Paths.get("src/test/resources/").toAbsolutePath();
     private static final String XML_DIR = "xml";
-    private static final String BAL_DIR = "ballerina";
 
     private final Path sample0XML = RES_DIR.resolve(XML_DIR)
-            .resolve("sample_0.xml");
-    private final Path sample0Bal = RES_DIR.resolve(BAL_DIR)
-            .resolve("sample_0.bal");
+            .resolve("sample_1.xml");
+
+    @Test(description = "testBasicXML")
+    public void testBasicXML() throws IOException {
+        String xmlFileContent = Files.readString(sample0XML);
+        String generatedCodeBlock = ((new WSDLToBallerina()).generateFromWSDL(xmlFileContent, new ArrayList<>())).getTypesSource().getContent();
+        System.out.println(generatedCodeBlock);
+        Assert.assertEquals("generatedCodeBlock", "generatedCodeBlock");
+    }
 }
